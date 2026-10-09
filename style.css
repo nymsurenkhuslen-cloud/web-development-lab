@@ -1,3 +1,27 @@
+/* Custom Properties (Design Tokens) */
+:root {
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --header-bg: #0f172a;
+    --accent-color: #0284c7;
+    --border-color: #e2e8f0;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Tokens */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --header-bg: #020617;
+    --accent-color: #38bdf8;
+    --border-color: #334155;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,24 +30,30 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Header & Navigation (Flexbox) */
+/* Header */
 .site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0f172a;
+    background-color: var(--header-bg);
     color: #ffffff;
     padding: 15px 40px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo h2 {
-    color: #38bdf8;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    stroke: var(--accent-color);
 }
 
 .nav-links {
@@ -35,207 +65,185 @@ body {
 .nav-links a {
     color: #cbd5e1;
     text-decoration: none;
-    font-weight: 500;
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #38bdf8;
+    color: var(--accent-color);
 }
 
-.btn-primary {
-    background-color: #0284c7;
+.btn-theme {
+    background-color: var(--accent-color);
     color: white;
     border: none;
-    padding: 8px 18px;
+    padding: 8px 16px;
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: transform 0.2s;
 }
 
-.btn-primary:hover {
-    background-color: #0369a1;
+.btn-theme:hover {
+    transform: scale(1.05);
 }
 
-/* Layout Container */
+/* Container */
 .container {
-    display: flex;
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
-    gap: 30px;
-}
-
-/* Sidebar */
-.sidebar {
-    flex: 0 0 240px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    height: fit-content;
-}
-
-.sidebar h3 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #0f172a;
-}
-
-.sidebar-menu {
-    list-style: none;
-}
-
-.sidebar-menu li {
-    margin-bottom: 8px;
-}
-
-.sidebar-menu a {
-    display: block;
-    padding: 8px 12px;
-    color: #475569;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-.sidebar-menu a:hover,
-.sidebar-menu a.active {
-    background-color: #e0f2fe;
-    color: #0369a1;
-    font-weight: 600;
-}
-
-/* Main Content & Grid */
-.main-content {
-    flex: 1;
 }
 
 .content-header {
     margin-bottom: 25px;
 }
 
-.content-header h1 {
-    font-size: 26px;
-    color: #0f172a;
-}
-
 .content-header p {
-    color: #64748b;
+    color: var(--text-secondary);
 }
 
+/* Card Grid */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Компьютерт 3 багана */
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
-.card {
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
+/* 3D Flip Card Engine */
+.card-3d {
+    perspective: 1000px;
+    height: 220px;
+    cursor: pointer;
+    /* Keyframes Animation with Stagger (--i) */
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: calc(var(--i) * 0.1s);
+    opacity: 0;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.card-3d.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
     padding: 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    box-shadow: 0 4px 15px var(--card-shadow);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+.card-back {
+    transform: rotateY(180deg);
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+.card-back p {
+    color: #e0f2fe;
 }
 
 .card-tag {
-    display: inline-block;
     align-self: flex-start;
-    background-color: #f1f5f9;
-    color: #0284c7;
+    background-color: var(--border-color);
+    color: var(--accent-color);
     font-size: 12px;
     font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 12px;
-    margin-bottom: 12px;
+    padding: 4px 10px;
+    border-radius: 10px;
 }
 
-.card h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    color: #0f172a;
+/* Keyframes Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.card p {
-    font-size: 14px;
-    color: #64748b;
+/* Multimedia Section */
+.multimedia-section {
+    margin-top: 50px;
+}
+
+.multimedia-section h2 {
     margin-bottom: 20px;
 }
 
-.card-btn {
-    background-color: transparent;
-    border: 1px solid #0284c7;
-    color: #0284c7;
-    padding: 8px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+.media-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
 }
 
-.card-btn:hover {
-    background-color: #0284c7;
-    color: white;
+.media-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.media-box h3 {
+    margin-bottom: 12px;
+}
+
+.media-video, .media-iframe {
+    width: 100%;
+    height: 220px;
+    border-radius: 8px;
+    border: none;
 }
 
 /* Footer */
 .site-footer {
     text-align: center;
     padding: 25px;
-    background-color: #0f172a;
+    background-color: var(--header-bg);
     color: #94a3b8;
-    font-size: 14px;
     margin-top: 50px;
 }
 
-/* ==========================================
-   3-р алхам: RESPONSIVE MEDIA QUERIES
-   ========================================== */
-
-/* 1. Таблет дэлгэц (Max-width: 992px) */
-@media (max-width: 992px) {
-    .container {
-        flex-direction: column; /* Sidebar дээр гарч, Main content доор орно */
-    }
-
-    .sidebar {
-        width: 100%;
-    }
-
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 баганатай болно */
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .card-3d, .card-inner, body, .btn-theme {
+        animation: none !important;
+        transition: none !important;
     }
 }
 
-/* 2. Гар утасны дэлгэц (Max-width: 600px) */
+/* Responsive */
+@media (max-width: 992px) {
+    .card-grid, .media-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 600px) {
+    .card-grid, .media-container {
+        grid-template-columns: 1fr;
+    }
     .site-header {
-        flex-direction: column; /* Элементүүдийг босоо чиглэлд байршуулна */
-        gap: 15px;
-        padding: 15px 20px;
-        text-align: center;
-    }
-
-    .nav-links {
         flex-direction: column;
-        gap: 10px;
-    }
-
-    .card-grid {
-        grid-template-columns: 1fr; /* 1 баганатай болно */
-    }
-
-    .container {
-        padding: 0 15px;
-        margin: 20px auto;
+        gap: 15px;
     }
 }
