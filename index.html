@@ -3,21 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лаборатори 03</title>
+    <title>Лаборатори 04 - Вэб Макет</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Оюутны Бүртгэлийн Портал</h1>
+
+    <!-- Header & Navigation Bar (Flexbox) -->
+    <header class="site-header">
+        <div class="logo">
+            <h2>WebLab4</h2>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#">Нүүр</a></li>
+                <li><a href="#">Хичээлүүд</a></li>
+                <li><a href="#">Мэдээлэл</a></li>
+                <li><a href="#">Холбоо барих</a></li>
+            </ul>
+        </nav>
+        <div class="header-action">
+            <button class="btn-primary">Нэвтрэх</button>
+        </div>
     </header>
-    <main>
-        <h2>Бүртгэлийн форм</h2>
-        <form action="#">
-            <label for="name">Овог нэр:</label>
-            <input type="text" id="name" name="name" placeholder="Овог нэрээ оруулна уу">
-            
-            <button type="submit" class="btn-submit">Хадгалах</button>
-        </form>
-    </main>
+
+    <!-- Үндсэн Layout (Sidebar + Main Content) -->
+    <div class="container">
+        
+        <!-- Sidebar (Хажуугийн цэс) -->
+        <aside class="sidebar">
+            <h3>Ангилал</h3>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">Бүх хичээл</a></li>
+                <li><a href="#">HTML / CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">UI/UX Дизайн</a></li>
+                <li><a href="#">Мэдээллийн аюулгүй байдал</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content (CSS Grid 3 багана) -->
+        <main class="main-content">
+            <section class="content-header">
+                <h1>Сургалтын Картан Цэс</h1>
+                <p>Flexbox болон Grid ашиглан зохиомжилсон карт макет.</p>
+            </section>
+
+            <section class="card-grid">
+                <article class="card">
+                    <div class="card-tag">HTML5</div>
+                    <h3>Веб Бүтэц</h3>
+                    <p>Семантик тагууд болон вэбийн үндсэн бүтцийг угсарч сурах хэсэг.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <div class="card-tag">CSS Flexbox</div>
+                    <h3>Flexbox Layout</h3>
+                    <p>Нэг хэмжээст байршил, элементүүдийг голлуулах, тэгшлэх аргууд.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <div class="card-tag">CSS Grid</div>
+                    <h3>Grid System</h3>
+                    <p>Хоёр хэмжээст макет, багана ба мөрүүдийн тохиргоог хийх.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <div class="card-tag">Responsive</div>
+                    <h3>Дэлгэцийн Зохицол</h3>
+                    <p>Гар утас, таблет, компьютерт тааруулж дизайныг уян хатан болгох.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <div class="card-tag">UI/UX</div>
+                    <h3>Хэрэглэгчийн Дизайн</h3>
+                    <p>Өнгө, фонт, зайн харьцааг оновчтой сонгож хэрэглэхэд хялбар болгох.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <div class="card-tag">Git / GitHub</div>
+                    <h3>Хувилбарын Хяналт</h3>
+                    <p>Кодоо GitHub дээр байршуулж вэб хуудас болгон нийтлэх.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Вэб хөгжүүлэлтийн лаборатори 04. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </footer>
+
 </body>
 </html>
