@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лаборатори 04 - Вэб Макет</title>
+    <title>Лаборатори 05 - Responsive Вэб Хуудас</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,10 +11,10 @@
 </head>
 <body>
 
-    <!-- Header & Navigation Bar (Flexbox) -->
+    <!-- Header & Navigation Bar -->
     <header class="site-header">
         <div class="logo">
-            <h2>WebLab4</h2>
+            <h2>WebLab5</h2>
         </div>
         <nav class="navbar">
             <ul class="nav-links">
@@ -29,7 +29,7 @@
         </div>
     </header>
 
-    <!-- Үндсэн Layout (Sidebar + Main Content) -->
+    <!-- Үндсэн Агуулга -->
     <div class="container">
         
         <!-- Sidebar (Хажуугийн цэс) -->
@@ -44,53 +44,53 @@
             </ul>
         </aside>
 
-        <!-- Main Content (CSS Grid 3 багана) -->
+        <!-- Main Content (Карт макет) -->
         <main class="main-content">
             <section class="content-header">
-                <h1>Сургалтын Картан Цэс</h1>
-                <p>Flexbox болон Grid ашиглан зохиомжилсон карт макет.</p>
+                <h1>Responsive Дэлгэцийн Зохиомж</h1>
+                <p>Media Queries ашиглан дэлгэцийн хэмжээнээс хамаарч автоматаар шилжих макет.</p>
             </section>
 
             <section class="card-grid">
                 <article class="card">
-                    <div class="card-tag">HTML5</div>
-                    <h3>Веб Бүтэц</h3>
-                    <p>Семантик тагууд болон вэбийн үндсэн бүтцийг угсарч сурах хэсэг.</p>
+                    <div class="card-tag">Responsive</div>
+                    <h3>Mobile First</h3>
+                    <p>Гар утасны жижиг дэлгэцээс эхлэн загварчилж, улмаар том дэлгэцэнд тохируулах арга барил.</p>
                     <button class="card-btn">Дэлгэрэнгүй</button>
                 </article>
 
                 <article class="card">
-                    <div class="card-tag">CSS Flexbox</div>
-                    <h3>Flexbox Layout</h3>
-                    <p>Нэг хэмжээст байршил, элементүүдийг голлуулах, тэгшлэх аргууд.</p>
+                    <div class="card-tag">CSS Media</div>
+                    <h3>Media Queries</h3>
+                    <p>@media шинж чанарыг ашиглан дэлгэцийн өргөнд тохирсон CSS дүрмүүдийг ажиллуулах.</p>
+                    <button class="card-btn">Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <div class="card-tag">UX/UI</div>
+                    <h3>Wireframe Эх Загвар</h3>
+                    <p>Figma эсвэл цаас дээр вэбийн бүтцийг урьдчилан төлөвлөх UX/UI-ийн анхан шатны ойлголт.</p>
                     <button class="card-btn">Дэлгэрэнгүй</button>
                 </article>
 
                 <article class="card">
                     <div class="card-tag">CSS Grid</div>
-                    <h3>Grid System</h3>
-                    <p>Хоёр хэмжээст макет, багана ба мөрүүдийн тохиргоог хийх.</p>
+                    <h3>Auto-fit & Responsive</h3>
+                    <p>Дэлгэц агшихад баганын тоо автоматаар цөөрч хэвтээ скролл үүсэхээс сэргийлнэ.</p>
                     <button class="card-btn">Дэлгэрэнгүй</button>
                 </article>
 
                 <article class="card">
-                    <div class="card-tag">Responsive</div>
-                    <h3>Дэлгэцийн Зохицол</h3>
-                    <p>Гар утас, таблет, компьютерт тааруулж дизайныг уян хатан болгох.</p>
+                    <div class="card-tag">Flexbox</div>
+                    <h3>Эмх Цэгцтэй Навигаци</h3>
+                    <p>Гар утасны дэлгэц дээр цэсийн товчлууруудыг босоо чиглэлд эмх цэгцтэй тэгшлэх.</p>
                     <button class="card-btn">Дэлгэрэнгүй</button>
                 </article>
 
                 <article class="card">
-                    <div class="card-tag">UI/UX</div>
-                    <h3>Хэрэглэгчийн Дизайн</h3>
-                    <p>Өнгө, фонт, зайн харьцааг оновчтой сонгож хэрэглэхэд хялбар болгох.</p>
-                    <button class="card-btn">Дэлгэрэнгүй</button>
-                </article>
-
-                <article class="card">
-                    <div class="card-tag">Git / GitHub</div>
-                    <h3>Хувилбарын Хяналт</h3>
-                    <p>Кодоо GitHub дээр байршуулж вэб хуудас болгон нийтлэх.</p>
+                    <div class="card-tag">Git / Pages</div>
+                    <h3>Байршуулалт</h3>
+                    <p>Кодoo GitHub дээр шинэчлэн шахаж GitHub Pages дээр шууд шалгах.</p>
                     <button class="card-btn">Дэлгэрэнгүй</button>
                 </article>
             </section>
@@ -99,7 +99,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <p>&copy; 2026 Вэб хөгжүүлэлтийн лаборатори 04. Бүх эрх хуулиар хамгаалагдсан.</p>
+        <p>&copy; 2026 Вэб хөгжүүлэлтийн лаборатори 05. Бүх эрх хуулиар хамгаалагдсан.</p>
     </footer>
 
 </body>
